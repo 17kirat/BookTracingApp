@@ -1,0 +1,185 @@
+﻿@page
+@model BookListRazor.Pages.BookList.EditModel
+
+<br />
+<h2 class="text-info">Edit Book</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <!-- We need to save the Id value here or Id will be default value (0) when we go to server side -->
+        <!-- In order to update the Book, we need the Id value on the server side -->
+        <input type="hidden" asp-for="Book.ISBN" />
+        
+
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Tittle"></label>
+            </div>
+
+            <!-- asp-for sets id, name etc. as well as setting the value of the input -->
+            <div class="col-6">
+                <input asp-for="Book.Tittle" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Book.Tittle" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Author"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="Book.Author" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Book.Author" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.ISBN"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="Book.ISBN" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.CateGory"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="Book.CateGory" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Book.CateGory" class="text-danger"></span>
+        </div>
+
+              
+
+
+                <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+
+        <input type="hidden" asp-for="Category.NameToken" />
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Category.NameToken"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="Category.NameToken" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Category.NameToken" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Category.Type"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="Category.Type" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Category.Type" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Category.Discription"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="Category.Discription" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Category.Discription" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+
+
+    </form>
+    </div>
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <input type="hidden" asp-for="CategoryType.Type" />
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="CategoryType.Name"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="CategoryType.Name" class="form-control" />
+            </div>
+
+            <span asp-validation-for="CategoryType.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="CategoryType.Type"></label>
+            </div>
+
+            <div class="col-6">
+                <input asp-for="CategoryType.Type" class="form-control" />
+            </div>
+
+            <span asp-validation-for="CategoryType.Type" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+
+    </form>
+    </div>
+
+        @section Scripts{
+            <partial name="_ValidationScriptsPartial" />
+        }

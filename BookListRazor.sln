@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookListRazor", "BookListRazor\BookListRazor.csproj", "{20B955A8-3AC4-4A20-A4B5-086D8C355AB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookTracingApp", "..\..\..\..\..\..\visual studio\BookTracingApp\BookTracingApp\BookTracingApp.csproj", "{F2EA3CD0-E987-4CB9-8A98-C7353E30A4B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20B955A8-3AC4-4A20-A4B5-086D8C355AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B955A8-3AC4-4A20-A4B5-086D8C355AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B955A8-3AC4-4A20-A4B5-086D8C355AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B955A8-3AC4-4A20-A4B5-086D8C355AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2EA3CD0-E987-4CB9-8A98-C7353E30A4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EA3CD0-E987-4CB9-8A98-C7353E30A4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EA3CD0-E987-4CB9-8A98-C7353E30A4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EA3CD0-E987-4CB9-8A98-C7353E30A4B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25F14CE9-E857-491B-94B0-A01F7A677914}
+	EndGlobalSection
+EndGlobal

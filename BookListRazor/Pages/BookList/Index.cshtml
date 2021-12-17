@@ -1,0 +1,222 @@
+﻿@page
+@model BookListRazor.Pages.BookList.IndexModel
+
+<br />
+
+<!-- These are all Bootstrap classes -->
+<!-- Bootstrap divides a row into 12 equal columns -->
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Book List</h2>
+    </div>
+
+    <div class="col-3">
+        <!-- If in the same directory, we can use only the page name to redirect -->
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Book</a>
+    </div>
+
+    
+
+    <!-- Using 'at' sign we can use c# syntax -->
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            <!-- If there are any books -->
+            @if (Model.Books.Count() > 0)
+            {
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    <label asp-for="Books.FirstOrDefault().Tittle"></label>
+                </th>
+                <th>
+                    <!-- Html helper version -->
+                    @* @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author) *@
+                    <label asp-for="Books.FirstOrDefault().Author"></label>
+                </th>
+                <th>
+                    <label asp-for="Books.FirstOrDefault().CateGory"></label>
+                </th>
+                <th>
+                    <label asp-for="Books.FirstOrDefault().ISBN"></label>
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var b in Model.Books)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => b.Tittle)
+            </td>
+            <td>
+                @Html.DisplayFor(m => b.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(m => b.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(m => b.CateGory)
+            </td>
+            <td>
+                <!-- When deleting, we need the Id of the Book -->
+                <button asp-page-handler="Delete" asp-route-id="@b.ISBN" onclick="return confirm('Are you sure you want to delete?')"
+                        class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+
+                <!-- Link to redirect to the edit page -->
+                <!-- We pass the Id of the Book to be edited as a parameter -->
+                <!-- When Edit page opens, asp-route-id can be seen in the url -->
+                <a asp-page="Edit" asp-route-id="@b.ISBN" class="btn btn-success btn-sm text-white">Edit</a>
+            </td>
+        </tr>}
+        </table> }
+            else if (Model.Category.Count() > 0)
+            {
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    <label asp-for="Category.FirstOrDefault().NameToken"></label>
+                </th>
+                <th>
+                    <!-- Html helper version -->
+                    @* @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author) *@
+                    <label asp-for="Category.FirstOrDefault().Type"></label>
+                </th>
+                <th>
+                    <label asp-for="Category.FirstOrDefault().Discription"></label>
+                </th>
+
+
+            </tr>
+
+            @foreach (var b in Model.Category)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => b.NameToken)
+            </td>
+            <td>
+                @Html.DisplayFor(m => b.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(m => b.Discription)
+            </td>
+
+            <td>
+                <!-- When deleting, we need the Id of the Book -->
+                <button asp-page-handler="Delete" asp-route-id="@b.NameToken" onclick="return confirm('Are you sure you want to delete?')"
+                        class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+
+                <!-- Link to redirect to the edit page -->
+                <!-- We pass the Id of the Book to be edited as a parameter -->
+                <!-- When Edit page opens, asp-route-id can be seen in the url -->
+                <a asp-page="Edit" asp-route-id="@b.NameToken" class="btn btn-success btn-sm text-white">Edit</a>
+            </td>
+        </tr>}
+        </table> }
+
+            else if (Model.CategoryType.Count() > 0)
+            {
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    <label asp-for="CategoryType.FirstOrDefault().Type"></label>
+                </th>
+                <th>
+                    <!-- Html helper version -->
+                    @* @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author) *@
+                    <label asp-for="CategoryType.FirstOrDefault().Name"></label>
+                </th>
+               </tr>
+
+            @foreach (var b in Model.CategoryType)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => b.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(m => b.Name)
+            </td>
+            
+            <td>
+                <!-- When deleting, we need the Id of the Book -->
+                <button asp-page-handler="Delete" asp-route-id="@b.Type" onclick="return confirm('Are you sure you want to delete?')"
+                        class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+
+                <!-- Link to redirect to the edit page -->
+                <!-- We pass the Id of the Book to be edited as a parameter -->
+                <!-- When Edit page opens, asp-route-id can be seen in the url -->
+                <a asp-page="Edit" asp-route-id="@b.Type" class="btn btn-success btn-sm text-white">Edit</a>
+            </td>
+        </tr>
+        }
+        </table>
+
+            }
+            else
+            {
+        <p>No books available.</p>
+        }
+        </form>
+    </div>
+
+    <div class="col-12" style="text-align:center">
+        <br />
+        <span class="h3 text-info">OR</span>
+        <br />
+        <br />
+    </div>
+
+    <!-- Below is for DataTables -->
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Tittle</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>CateGory</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+ 
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>NameToken</th>
+                    <th>Type</th>
+                    <th>Discription</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!-- DataTable will be loaded using JS -->
+@section Scripts{ 
+    <script src="~/js/bookList.js"></script>
+}
